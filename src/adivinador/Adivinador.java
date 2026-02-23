@@ -36,45 +36,35 @@ public class Adivinador {
         //numAleatorio.setText("num aleatorio: "+aleatorio);
     }
 
-    public void adivinar()
-    {
+    public void adivinar() {
         int numAdivinador = Integer.parseInt(campoAdivinar.getText());
         int absoluto = Math.abs(aleatorio - numAdivinador);
 
-        if(absoluto == 0)
-        {
+        if (absoluto == 0) {
             JOptionPane.showMessageDialog(null, "Ganaste");
             mainPanel.setBackground(Color.green);
             adivinarButton.setEnabled(false);
-        }
-        else if (absoluto >= 1 && absoluto <= 3)
-        {
+        } else if (absoluto >= 1 && absoluto <= 3) {
             JOptionPane.showMessageDialog(null, "Caliente");
             mainPanel.setBackground(Color.red);
             vidas--;
-        }
-        else if (absoluto >= 4 && absoluto <= 6) {
+        } else if (absoluto >= 4 && absoluto <= 6) {
             JOptionPane.showMessageDialog(null, "tibio");
             mainPanel.setBackground(Color.orange);
             vidas--;
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Frio");
             mainPanel.setBackground(Color.blue);
             vidas--;
         }
 
-        if (vidas == 0)
-        {
-            JOptionPane.showMessageDialog(null, "Perdiste \nEl numero era: "+aleatorio);
+        if (vidas == 0) {
+            JOptionPane.showMessageDialog(null, "Perdiste \nEl numero era: " + aleatorio);
             mainPanel.setBackground(Color.black);
             adivinarButton.setEnabled(false);
         }
-        contadorVidas.setText("Vidas: "+vidas);
-
-
-        }
+        contadorVidas.setText("Vidas: " + vidas);
+    }
 
 
     public static void main(String[] args) {
