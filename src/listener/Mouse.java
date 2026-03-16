@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 
 public class Mouse {
     private JPanel mainPanel;
+    private JCheckBox checkBox1;
 
     public Mouse() {
         mainPanel.addMouseListener(new MouseAdapter() {
@@ -24,6 +25,7 @@ public class Mouse {
                 {
                     //JOptionPane.showMessageDialog(null, "Hiciste click simple");
                     mainPanel.setBackground(Color.yellow);
+
                 }
 
             }

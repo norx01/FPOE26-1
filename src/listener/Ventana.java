@@ -52,13 +52,13 @@ public class Ventana {
                 @Override
                 public void windowActivated(WindowEvent e)
                 {
-                    JOptionPane.showMessageDialog(null, "Ventana activada");
+                    System.out.println("Ventana activada");
                 }
 
                 @Override
                 public void windowDeactivated(WindowEvent e)
                 {
-                    JOptionPane.showMessageDialog(null, "Ventana desactivada");
+                    System.out.println("Ventana desactivada");
                 }
             });
         });
