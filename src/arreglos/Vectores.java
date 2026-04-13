@@ -59,6 +59,47 @@ public class Vectores
         }
     }
 
+    public void mayor()
+    {
+        int mayor = numeros[0];
+
+        for (int i = 1; i < numeros.length; i++)
+        {
+            if (numeros[i] > mayor)
+                mayor = numeros[i];
+        }
+        JOptionPane.showMessageDialog(null,"El mayor numero es: "+mayor);
+
+        int menor = numeros[0];
+
+        for (int i = 1; i < numeros.length; i++)
+        {
+            if (numeros[i] < menor)
+                menor = numeros[i];
+        }
+        JOptionPane.showMessageDialog(null,"El mayor numero es: "+menor);
+    }
+
+    public void primo()
+    {
+        for (int i = 0; i < numeros.length; i++)
+        {
+            int n = numeros[i];
+            boolean esPrimo = true;
+
+            for (int j = 2; j < n; j++)
+            {
+                if (n % j == 0)
+                    esPrimo = false;
+            }
+
+            if (esPrimo)
+                System.out.println(n + " es primo");
+            else
+                System.out.println(n + " no es primo");
+        }
+    }
+
     public void menu()
     {
         int opcion = Integer.parseInt(JOptionPane.showInputDialog("1.Agregar datos\n2.Mostrar datos\n3.Eliminar datos\n4.Editar datos\n5.Buscar dato"));
@@ -81,6 +122,12 @@ public class Vectores
                 break;
             case 0:
                 System.exit(0);
+                break;
+            case 6:
+                mayor();
+                break;
+            case 7:
+                primo();
                 break;
             default:
                 JOptionPane.showMessageDialog(null,"Opcion invalida");
