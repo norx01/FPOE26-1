@@ -98,11 +98,91 @@ public class Archivos
             JOptionPane.showMessageDialog(null, "Error al eliminar el archivo");
     }
 
+    public void buscarPalabra()
+    {
+        nombreArchivo = JOptionPane.showInputDialog("Ingrese el nombre del archivo");
+        String palabra = JOptionPane.showInputDialog("Ingrese la palabra a buscar");
+
+        int contador = 0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo + ".txt")))
+        {
+            String linea;
+
+            while ((linea = br.readLine()) != null)
+            {
+                if (linea.contains(palabra))
+                {
+                    contador++;
+                    JOptionPane.showMessageDialog(null,"La palabra se encuentra en la linea: "+linea);
+                }
+            }
+
+            if (contador == 0)
+                JOptionPane.showMessageDialog(null,"La palabra no se encuentra en el archivo");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Error al leer el archivo");
+        }
+    }
+
+    public void escribirDatos()
+    {
+        nombreArchivo = JOptionPane.showInputDialog("Ingrese el nombre del archivo");
+
+        try
+        {
+            FileWriter writer = new FileWriter(nombreArchivo+".txt", true);
+
+            String nombre = JOptionPane.showInputDialog("Ingrese el nombre");
+            String documento = JOptionPane.showInputDialog("Ingrese el documento");
+            String edad = JOptionPane.showInputDialog("Ingrese la edad");
+
+            writer.write(nombre + " | "+documento+" | "+edad+"\n");
+            writer.close();
+            JOptionPane.showMessageDialog(null,"Datos guardados con exito");
+
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Error al escribir el archivo");
+        }
+    }
+
+    public void obtenerDatos()
+    {
+        nombreArchivo = JOptionPane.showInputDialog("Ingrese el nombre del archivo");
+
+        try
+        {
+          BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo+".txt"));
+          String linea;
+          System.out.println("Archivo: "+" "+nombreArchivo+".txt");
+
+          while ((linea = reader.readLine()) != null)
+          {
+              String[] partes = linea.split("\\|");
+              System.out.println("Nombre: "+" "+partes[0]);
+              System.out.println("Documento: "+" "+partes[1]);
+              System.out.println("Edad: "+" "+partes[2]);
+          }
+          reader.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Error al leer el archivo");
+        }
+    }
+
     public void menu()
     {
         int op = Integer.parseInt(JOptionPane.showInputDialog
                 ("1.Crear Archivo \n2.Escribir Archivo \n3.Leer archivo \n4.Agregar Texto" +
-                        "\n5.Eliminar Archivo \n0.Salir"));
+                        "\n5.Eliminar Archivo \n6.Buscar Palabra \n7.Escribir Datos \n8.Obtener Datos \n0.Salir"));
 
         switch (op)
         {
@@ -120,6 +200,15 @@ public class Archivos
                 break;
             case 5:
                 eliminarArchivo();
+                break;
+            case 6:
+                buscarPalabra();
+                break;
+            case 7:
+                escribirDatos();
+                break;
+            case 8:
+                obtenerDatos();
                 break;
             case 0:
                 System.exit(0);
