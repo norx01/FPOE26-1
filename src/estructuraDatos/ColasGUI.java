@@ -16,6 +16,8 @@ public class ColasGUI {
 
     Queue<String> cola = new LinkedList<>();
 
+
+
     int cliente = 1;
 
     public ColasGUI()
