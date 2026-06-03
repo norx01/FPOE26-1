@@ -158,8 +158,8 @@ public class Archivos
 
         try
         {
-          BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo+".txt"));
-          String linea;
+            BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo+".txt"));
+            String linea;
           System.out.println("Archivo: "+" "+nombreArchivo+".txt");
 
           while ((linea = reader.readLine()) != null)
@@ -169,12 +169,15 @@ public class Archivos
               System.out.println("Documento: "+" "+partes[1]);
               System.out.println("Edad: "+" "+partes[2]);
           }
-          reader.close();
+
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();
             JOptionPane.showMessageDialog(null,"Error al leer el archivo");
+        }
+        finally {
+            System.out.println("Finalizo el proceso de lectura del archivo" + nombreArchivo);
         }
     }
 

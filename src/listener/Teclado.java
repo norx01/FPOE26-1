@@ -34,6 +34,7 @@ public class Teclado {
                 if (!texto.contains("@gmail.com") && !texto.contains("@hotmail.com"))
                 {
                     JOptionPane.showMessageDialog(null, "El correo no es valido");
+                    textField3.setText("");
                 }
             }
         });
